@@ -7,8 +7,8 @@
 		</commentGenerator>
 
 		<!-- 数据库链接URL、用户名、密码 -->
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-						connectionURL="jdbc:mysql://192.168.0.174:3306/permission?characterEncoding=utf8"
+		<jdbcConnection driverClass="com.mariadb.jdbc.Driver"
+						connectionURL="jdbc:mariadb://192.168.10.174:3306/permission?characterEncoding=utf8"
 						userId="suser"
 						password="suser">  <!-- 2 -->
 		</jdbcConnection>
