@@ -7,7 +7,7 @@
 		</commentGenerator>
 
 		<!-- 数据库链接URL、用户名、密码 -->
-		<jdbcConnection driverClass="com.mariadb.jdbc.Driver"
+		<jdbcConnection driverClass="org.mariadb.jdbc.Driver"
 						connectionURL="jdbc:mariadb://192.168.10.174:3306/permission?characterEncoding=utf8"
 						userId="suser"
 						password="suser">  <!-- 2 -->
@@ -21,21 +21,21 @@
 
 		<!-- 生成模型的包名和位置 --> <!-- 3 -->
 		<javaModelGenerator targetPackage="sproject.base.model"
-							targetProject="./src">
+							targetProject="./src/main/java">
 			<property name="enableSubPackages" value="false" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<!-- 生成的映射文件包名和位置 --> <!-- 4 -->
 		<sqlMapGenerator targetPackage="sproject.base.mapper"
-						 targetProject="./src">
+						 targetProject="./src/main/java">
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 
 		<!-- 生成DAO的包名和位置 --> <!-- 5 -->
 		<javaClientGenerator type="XMLMAPPER"
 							 targetPackage="sproject.base.dao"
-							 targetProject="./src">
+							 targetProject="./src/main/java">
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 

@@ -9,7 +9,6 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <!--请求相关配置-->
 
     <!--启用上下文相关注解-->
     <context:annotation-config />
@@ -17,21 +16,50 @@
     <!--启动注解处理器映射器和适配器-->
     <mvc:annotation-driven/>
 
+    <mvc:interceptors>
+        <bean class="sproject.util.HttpInterceptor"/>
+    </mvc:interceptors>
+
     <!--启动组件扫描功能 -->
     <context:component-scan base-package="sproject.base.controller" />
     <context:component-scan base-package="sproject.base.service" />
     <context:component-scan base-package="sproject.business.controller" />
     <context:component-scan base-package="sproject.business.service" />
 
-    <!--视图解析器，返回jsp-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/" />
-        <property name="suffix" value=".jsp" />
-    </bean>
+    <!--获得springMVC中的bean-->
+    <bean class="sproject.util.ApplicationContextHelper" lazy-init="false"/>
 
-    <!--json视图解析器,返回json-->
+<!--第一种视图解析器配置-->
+<!--
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        &lt;!&ndash;jsp视图解析器&ndash;&gt;
+        <property name="viewResolvers">
+            <list>
+                &lt;!&ndash; <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/> &ndash;&gt;
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <property name="prefix" value="/WEB-INF/views/"/>
+                    <property name="suffix" value=".jsp"/>
+                </bean>
+            </list>
+        </property>
+        &lt;!&ndash;json视图解析器&ndash;&gt;
+        <property name="defaultViews">
+            <list>
+                <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+            </list>
+        </property>
+    </bean>
+-->
+
+
+    <!--第二种视图解析器配置，必须按顺序书写-->
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
-    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
     <!--静态资源映射-->
     <mvc:resources location="/js/" mapping="/js/**"/>
@@ -39,4 +67,7 @@
     <mvc:resources location="/bootstrap3.3.5/" mapping="/bootstrap3.3.5/**"/>
     <mvc:resources location="/assets/" mapping="/assets/**"/>
     <mvc:resources location="/ztree/" mapping="/ztree/**"/>
+
+    <!--全局异常处理器-->
+    <bean class="sproject.exception.SpringExceptionResolver"/>
 </beans>
