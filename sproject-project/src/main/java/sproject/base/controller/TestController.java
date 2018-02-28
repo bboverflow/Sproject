@@ -9,7 +9,7 @@ import sproject.base.model.SysAclModule;
 import sproject.common.JsonData;
 import sproject.common.JsonMapper;
 import sproject.exception.ParamExecption;
-import sproject.param.TestVo;
+import sproject.base.param.TestVo;
 import sproject.util.ApplicationContextHelper;
 import sproject.util.BeanValidator;
 
