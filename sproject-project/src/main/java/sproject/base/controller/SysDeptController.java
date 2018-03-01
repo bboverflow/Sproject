@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import sproject.base.dto.DeptLevelDto;
 import sproject.base.param.DeptParam;
 import sproject.base.service.SysDeptService;
@@ -23,6 +24,11 @@ public class SysDeptController {
 
     @Resource
     private SysTreeService sysTreeService;
+
+    @RequestMapping("/admin.page")
+    public String admin(){
+        return "dept";
+    }
 
     @RequestMapping("/save.json")
     @ResponseBody
