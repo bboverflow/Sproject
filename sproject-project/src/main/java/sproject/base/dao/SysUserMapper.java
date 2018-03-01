@@ -1,5 +1,6 @@
 package sproject.base.dao;
 
+import org.apache.ibatis.annotations.Param;
 import sproject.base.model.SysUser;
 
 public interface SysUserMapper {
@@ -14,4 +15,6 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    int countByDeptId(@Param("deptId") int deptId);
 }

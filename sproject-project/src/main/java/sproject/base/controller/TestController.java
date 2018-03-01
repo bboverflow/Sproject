@@ -8,7 +8,7 @@ import sproject.base.dao.SysAclModuleMapper;
 import sproject.base.model.SysAclModule;
 import sproject.common.JsonData;
 import sproject.common.JsonMapper;
-import sproject.exception.ParamExecption;
+import sproject.exception.ParamException;
 import sproject.base.param.TestVo;
 import sproject.util.ApplicationContextHelper;
 import sproject.util.BeanValidator;
@@ -33,14 +33,14 @@ public class TestController {
 
     @RequestMapping("/validate.json")
     @ResponseBody
-    public JsonData validate(TestVo vo) throws ParamExecption {
+    public JsonData validate(TestVo vo) throws ParamException {
         BeanValidator.check(vo);
         return JsonData.success("test validate");
     }
 
     @RequestMapping("/getBean.json")
     @ResponseBody
-    public JsonData getBean() throws ParamExecption{
+    public JsonData getBean() throws ParamException {
         SysAclModuleMapper moduleMapper = ApplicationContextHelper.popBean(SysAclModuleMapper.class);
         SysAclModule sysAclModule = moduleMapper.selectByPrimaryKey(1);
         log.info(JsonMapper.obj2String(sysAclModule));

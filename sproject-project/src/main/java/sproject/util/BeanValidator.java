@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.apache.commons.collections.MapUtils;
-import sproject.exception.ParamExecption;
+import sproject.exception.ParamException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -81,13 +81,13 @@ public class BeanValidator {
     /**
      * 校验参数并抛出异常
      * @param param
-     * @throws ParamExecption
+     * @throws ParamException
      */
-    public static void check(Object param) throws ParamExecption
+    public static void check(Object param) throws ParamException
     {
         Map<String, String> map = BeanValidator.validateObject(param);
         if(MapUtils.isNotEmpty(map)){
-            throw new ParamExecption(map.toString());
+            throw new ParamException(map.toString());
         }
     }
 }
