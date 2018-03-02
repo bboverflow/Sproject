@@ -21,6 +21,10 @@
         <!--<appender-ref ref="permission"/>-->
     <!--</logger>-->
 
+    <logger name="dao" level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
     <!-- TRACE < DEBUG < INFO < WARN < ERROR -->
     <root level="INFO">
         <appender-ref ref="STDOUT" />

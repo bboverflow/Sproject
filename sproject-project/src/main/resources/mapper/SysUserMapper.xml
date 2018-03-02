@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="sproject.base.dao.SysUserMapper">
-  <resultMap id="BaseResultMap" type="sproject.base.model.SysUser">
+<mapper namespace="sproject.sys.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="sproject.sys.model.SysUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="telephone" jdbcType="VARCHAR" property="telephone" />
@@ -28,7 +28,7 @@
     delete from sys_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="sproject.base.model.SysUser">
+  <insert id="insert" parameterType="sproject.sys.model.SysUser">
     insert into sys_user (id, username, telephone, 
       mail, password, dept_id, 
       status, remark, operator, 
@@ -38,7 +38,7 @@
       #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
       #{operateTime,jdbcType=TIMESTAMP}, #{operateIp,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="sproject.base.model.SysUser">
+  <insert id="insertSelective" parameterType="sproject.sys.model.SysUser">
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="sproject.base.model.SysUser">
+  <update id="updateByPrimaryKeySelective" parameterType="sproject.sys.model.SysUser">
     update sys_user
     <set>
       <if test="username != null">
@@ -147,7 +147,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="sproject.base.model.SysUser">
+  <update id="updateByPrimaryKey" parameterType="sproject.sys.model.SysUser">
     update sys_user
     set username = #{username,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=VARCHAR},
@@ -167,4 +167,5 @@
     FROM sys_user
     WHERE dept_id = #{deptId}
   </select>
+
 </mapper>

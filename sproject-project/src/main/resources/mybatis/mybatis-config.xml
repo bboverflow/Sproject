@@ -8,6 +8,9 @@
         <setting name="safeRowBoundsEnabled" value="true"/>
         <setting name="cacheEnabled" value="false" />
         <setting name="useGeneratedKeys" value="true" />
+        <!--logback输出日志-->
+        <setting name="logImpl" value="SLF4J"/>
+        <setting name="logPrefix" value="dao."/>
     </settings>
 
     <!--<typeAliases>-->

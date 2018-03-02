@@ -21,8 +21,8 @@
     </mvc:interceptors>
 
     <!--启动组件扫描功能 -->
-    <context:component-scan base-package="sproject.base.controller" />
-    <context:component-scan base-package="sproject.base.service" />
+    <context:component-scan base-package="sproject.sys.controller" />
+    <context:component-scan base-package="sproject.sys.service" />
     <context:component-scan base-package="sproject.business.controller" />
     <context:component-scan base-package="sproject.business.service" />
 
