@@ -35,8 +35,10 @@ public class SysUserService {
         String encryptedPassword = MD5Util.encrypt(password);
         SysUser user = SysUser.builder().username(param.getUsername()).telephone(param.getTelephone()).mail(param.getMail())
                 .password(encryptedPassword).deptId(param.getDeptId()).status(param.getStatus()).remark(param.getRemark()).build();
-        user.setOperator(RequestHolder.getCurrentUser().getUsername());
-        user.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
+
+        //todo
+        user.setOperator("system");
+        user.setOperateIp("127.0.0.1");
         user.setOperateTime(new Date());
 
         // TODO: sendEmail
@@ -56,35 +58,23 @@ public class SysUserService {
         Preconditions.checkNotNull(before, "待更新的用户不存在");
         SysUser after = SysUser.builder().id(param.getId()).username(param.getUsername()).telephone(param.getTelephone()).mail(param.getMail())
                 .deptId(param.getDeptId()).status(param.getStatus()).remark(param.getRemark()).build();
-        after.setOperator(RequestHolder.getCurrentUser().getUsername());
-        after.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
+        //todo
+        after.setOperator("system");
+        after.setOperateIp("127.0.0.1");
         after.setOperateTime(new Date());
         sysUserMapper.updateByPrimaryKeySelective(after);
     }
 
     public boolean checkEmailExist(String mail, Integer userId) {
-        return sysUserMapper.countByMail(mail, userId) > 0;
+        return false;
     }
 
     public boolean checkTelephoneExist(String telephone, Integer userId) {
-        return sysUserMapper.countByTelephone(telephone, userId) > 0;
+        return false;
     }
 
     public SysUser findByKeyword(String keyword) {
-        return sysUserMapper.findByKeyword(keyword);
-    }
-
-    public PageResult<SysUser> getPageByDeptId(int deptId, PageQuery page) {
-        BeanValidator.check(page);
-        int count = sysUserMapper.countByDeptId(deptId);
-        if (count > 0) {
-            List<SysUser> list = sysUserMapper.getPageByDeptId(deptId, page);
-            return PageResult.<SysUser>builder().total(count).data(list).build();
-        }
-        return PageResult.<SysUser>builder().build();
-    }
-
-    public List<SysUser> getAll() {
-        return sysUserMapper.getAll();
+        //todo
+        return null;
     }
 }

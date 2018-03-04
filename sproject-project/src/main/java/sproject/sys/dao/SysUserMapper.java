@@ -17,4 +17,10 @@ public interface SysUserMapper {
     int updateByPrimaryKey(SysUser record);
 
     int countByDeptId(@Param("deptId") int deptId);
+
+    SysUser findByKeyword(@Param("key") String keyword);
+
+    int countByMail(@Param("mail") String mail, @Param("id") Integer id);
+
+    int countByTelephone(@Param("telephone") String telephone, @Param("id") Integer id);
 }
